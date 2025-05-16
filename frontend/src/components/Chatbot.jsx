@@ -371,7 +371,7 @@ const Chatbot = () => {
 
     try {
       const uiSize = getUiSize();
-      const response = await fetch('http://localhost:8080/api/chatbot/message', {
+      const response = await fetch('https://real-estate-server-2ey5.onrender.com/api/chatbot/message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
