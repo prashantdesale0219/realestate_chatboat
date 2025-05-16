@@ -533,8 +533,8 @@
   }
   
   .chatbot-messages {
-    height: calc(100vh - 140px);
-    max-height: calc(100vh - 140px);
+    height: calc(100vh - 160px);
+    max-height: calc(100vh - 160px);
     padding: 15px;
   }
   
@@ -546,6 +546,27 @@
   
   .message {
     margin-bottom: 15px;
+  }
+  
+  .chatbot-input {
+    padding: 12px 15px;
+  }
+  
+  .input-container {
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .notion-text-input {
+    width: 100%;
+    padding: 8px;
+    margin: 0 5px;
+    font-size: 15px;
+  }
+  
+  .input-footer {
+    margin-top: 5px;
   }
 }
 
