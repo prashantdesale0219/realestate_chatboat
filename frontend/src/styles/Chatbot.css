@@ -1,83 +1,203 @@
-/* Animultis-like Layout */
+:root {
+  /* Light Theme Variables - Modern Style */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f6f3;
+  --text-primary: #37352f;
+  --text-secondary: #6b7280;
+  --accent-color: #5B64F1;
+  --accent-hover: #4951d8;
+  --border-color: #e5e5e5;
+  --shadow-color: rgba(15, 15, 15, 0.05);
+  --message-user-bg: #5B64F1;
+  --message-user-text: #ffffff;
+  --message-bot-bg: #F0F0F0;
+  --message-bot-text: #333333;
+  --input-bg: #ffffff;
+  --sidebar-bg: #fbfbfa;
+  --sidebar-active: #f1f1ef;
+  --scrollbar-thumb: #d3d1cb;
+  --scrollbar-track: #f7f6f3;
+  --callout-bg: #f7f6f3;
+  --code-bg: #f7f6f3;
+  --code-block-bg: #f7f6f3;
+  --code-block-border: #e5e5e5;
+  --highlight-color: #feefc3;
+  --highlight-text: #37352f;
+  --notion-blue: #5B64F1;
+  --notion-red: #eb4747;
+  --notion-yellow: #dfab01;
+  --notion-green: #0f9d58;
+  --notion-purple: #9b51e0;
+  --notion-pink: #ff5cb1;
+  --notion-orange: #ff9500;
+}
+
+[data-theme="dark"], .dark-mode {
+  --bg-primary: #191919;
+  --bg-secondary: #2f3437;
+  --text-primary: #e6e6e6;
+  --text-secondary: #999999;
+  --accent-color: #5B64F1;
+  --accent-hover: #7c83f5;
+  --border-color: #373737;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --message-user-bg: #5B64F1;
+  --message-user-text: #ffffff;
+  --message-bot-bg: #2f3437;
+  --message-bot-text: #e6e6e6;
+  --input-bg: #2f3437;
+  --sidebar-bg: #202020;
+  --sidebar-active: #2f3437;
+  --scrollbar-thumb: #505050;
+  --scrollbar-track: #2f3437;
+  --callout-bg: #2f3437;
+  --code-bg: #2f3437;
+  --code-block-bg: #2f3437;
+  --code-block-border: #373737;
+  --highlight-color: #634d19;
+  --highlight-text: #e6e6e6;
+}
+
+/* Layout */
 .chatbot-layout {
   display: flex;
   width: 100%;
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  font-family: 'Poppins', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f5f7fb;
-  color: #333;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
-/* Chatbot Container Styles - Animultis-like */
+/* Chatbot Container Styles */
 .chatbot-container {
   flex: 1;
   height: 100vh;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5f7fb;
+  background-color: var(--bg-primary);
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  z-index: 1;
 }
 
-/* Chatbot Header Styles - Animultis-like */
+/* Chatbot Header Styles */
 .chatbot-header {
-  background-color: #ffffff;
-  color: #333;
-  padding: 15px 20px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 16px 20px;
   text-align: left;
-  border-bottom: 1px solid #e6e9f0;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px var(--shadow-color);
+  transition: all 0.3s ease;
+  z-index: 10;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
 }
 
 .chatbot-header h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #4a6bff;
-  letter-spacing: 0.5px;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-icon {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--border-color);
+  color: var(--accent-color);
 }
 
 .chatbot-subtitle {
-  font-size: 0.8rem;
-  color: #7d8da7;
-  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* Messages Container - Animultis-like */
+/* Messages Container */
 .chatbot-messages {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  background-color: #f5f7fb;
-  height: calc(100vh - 130px); /* Adjust based on header and input heights */
+  gap: 24px;
+  background-color: var(--bg-primary);
+  height: calc(100vh - 130px);
   max-height: calc(100vh - 130px);
+  transition: all 0.3s ease;
 }
 
-/* Message Styles - ChatGPT-like */
+/* Scrollbar Styling */
+.notion-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.notion-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notion-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+.notion-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+
+/* Message Styles */
 .message {
   width: 100%;
   position: relative;
-  margin-bottom: 0;
+  margin-bottom: 20px;
   word-wrap: break-word;
   line-height: 1.6;
-  font-size: 16px;
+  font-size: 15px;
   transition: all 0.3s ease;
   display: flex;
-  align-items: flex-start;
-  padding: 16px;
+  align-items: flex-end;
   border-bottom: none;
 }
 
@@ -88,84 +208,379 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 16px;
-  background-color: #4a6bff;
-  color: white;
+  margin-right: 12px;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   font-weight: bold;
   flex-shrink: 0;
-  box-shadow: 0 2px 10px rgba(74, 107, 255, 0.2);
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  overflow: hidden;
 }
 
 .message-bubble {
-  flex: 1;
-  padding: 16px;
-  max-width: 800px;
+  flex: 0 1 auto;
+  padding: 12px;
+  max-width: 80%;
   margin: 0;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px var(--shadow-color);
+  transition: all 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  width: fit-content;
 }
 
 .message:hover .message-bubble {
-  transform: translateY(-2px);
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 .message-content p {
   margin: 0 0 12px 0;
-  color: #333;
+  color: inherit;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
 }
 
 .message-content p:last-child {
   margin-bottom: 0;
 }
 
-.message-content a {
-  color: #4a6bff;
-  text-decoration: none;
-  border-bottom: 1px solid #4a6bff;
-}
-
-.message-content a:hover {
-  opacity: 0.8;
-  background-color: rgba(74, 107, 255, 0.1);
-}
-
 .message.user {
   background-color: transparent;
   justify-content: flex-end;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+}
+
+.message.user .message-avatar {
+  margin-right: 0;
+  margin-left: 8px;
+  order: 2;
 }
 
 .message.bot {
   background-color: transparent;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
 }
 
 .message.user .message-bubble {
-  background-color: #4a6bff;
-  color: #fff;
+  background-color: var(--message-user-bg);
+  color: var(--message-user-text);
   border-radius: 18px 18px 0 18px;
-  margin-left: 50px;
+  margin-left: 0;
+  margin-right: 0;
+  border: none;
+  align-self: flex-end;
+  order: 1;
 }
 
 .message.bot .message-bubble {
-  background-color: #ffffff;
-  color: #333;
+  background-color: var(--message-bot-bg);
+  color: var(--message-bot-text);
   border-radius: 18px 18px 18px 0;
+  border: none;
+  margin-right: 0;
+}
+
+.message-timestamp {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  text-align: right;
+  opacity: 0.7;
+  padding: 0 5px;
 }
 
 .user-message-content {
   font-weight: 400;
-  color: #fff;
+  color: var(--message-user-text);
 }
 
-.notion-list-item, .notion-numbered-item {
-  margin: 6px 0;
-  padding-left: 8px;
+/* Input Area Styles */
+.chatbot-input {
+  padding: 16px 20px;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  margin-top: auto;
 }
 
-/* ChatGPT-style formatting for ReactMarkdown */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg);
+  border-radius: 25px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 2px var(--shadow-color);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.input-container:focus-within {
+  box-shadow: 0 0 0 2px var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.notion-text-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 16px;
+  color: var(--text-primary);
+  outline: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: -0.011em;
+  margin: 0 10px;
+}
+
+.notion-text-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.new-chat-button {
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+}
+
+.new-chat-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.send-button {
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
+}
+
+.send-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.send-button:disabled {
+  background-color: var(--border-color);
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-footer {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+.input-tip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Loading Animation */
+.loading .message-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  min-width: 60px;
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  float: left;
+  margin: 0 1px;
+  background-color: var(--text-secondary);
+  display: block;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.typing-indicator span:nth-of-type(1) {
+  animation: 1s blink infinite 0.3333s;
+}
+
+.typing-indicator span:nth-of-type(2) {
+  animation: 1s blink infinite 0.6666s;
+}
+
+.typing-indicator span:nth-of-type(3) {
+  animation: 1s blink infinite 0.9999s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Sidebar Toggle Button for Mobile */
+.sidebar-toggle-mobile {
+  display: flex;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+}
+
+.sidebar-toggle-mobile:hover {
+  background-color: var(--border-color);
+  color: var(--accent-color);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Styles */
+/* Sidebar Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%; /* Only cover the sidebar width */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  pointer-events: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .chatbot-layout {
+    flex-direction: column;
+  }
+  
+  .chat-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 100;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .chat-sidebar:not(.collapsed) {
+    transform: translateX(0);
+  }
+  
+  .sidebar-toggle-mobile {
+    display: flex;
+  }
+  
+  .chatbot-container {
+    height: 100vh;
+    max-height: 100vh;
+  }
+  
+  .chatbot-messages {
+    height: calc(100vh - 140px);
+    max-height: calc(100vh - 140px);
+    padding: 15px;
+  }
+  
+  .message-bubble {
+    max-width: 80%;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .message {
+    margin-bottom: 15px;
+  }
+}
+
+/* Notion-style formatting */
 .notion-style {
-  font-family: 'Poppins', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif;
-  color: #333;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: inherit;
+  letter-spacing: -0.011em;
+}
+
+.notion-paragraph {
+  margin: 0.5em 0;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  font-size: 16px;
+}
+
+.notion-heading {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+
+.notion-heading-1 {
+  font-size: 1.875em;
+}
+
+.notion-heading-2 {
+  font-size: 1.5em;
+}
+
+.notion-heading-3 {
+  font-size: 1.25em;
 }
 
 .notion-style h1, 
@@ -174,433 +589,219 @@
   font-weight: 600;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
-  color: #333;
+  color: inherit;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
 .notion-style h1 {
-  font-size: 1.8em;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.3em;
+  font-size: 1.875em;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
 }
 
 .notion-style h2 {
   font-size: 1.5em;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.2em;
+  margin-top: 1.3em;
+  margin-bottom: 0.4em;
 }
 
 .notion-style h3 {
-  font-size: 1.2em;
+  font-size: 1.25em;
+  margin-top: 1.2em;
+  margin-bottom: 0.3em;
 }
 
 .notion-style ul, 
 .notion-style ol {
   padding-left: 1.5em;
   margin: 0.8em 0;
+  color: inherit;
 }
 
 .notion-style li {
-  margin: 0.5em 0;
-  line-height: 1.6;
+  margin: 0.3em 0;
+  padding: 3px 0;
+  position: relative;
 }
 
-.notion-style blockquote {
-  border-left: 3px solid #4a6bff;
-  margin-left: 0;
-  padding: 0.8em 1em;
-  color: #7d8da7;
-  background-color: rgba(74, 107, 255, 0.05);
-  border-radius: 0 8px 8px 0;
+.notion-style ul li::before {
+  content: '•';
+  position: absolute;
+  left: -1.2em;
+  color: var(--text-secondary);
+}
+
+.notion-style ol {
+  counter-reset: list-counter;
+}
+
+.notion-style ol li {
+  counter-increment: list-counter;
+}
+
+.notion-style ol li::before {
+  content: counter(list-counter) '.';
+  position: absolute;
+  left: -1.5em;
+  color: var(--text-secondary);
+  font-size: 0.9em;
 }
 
 .notion-style code {
-  background-color: rgba(74, 107, 255, 0.1);
+  font-family: 'Fira Code', 'Roboto Mono', monospace;
+  background-color: var(--code-bg);
   padding: 0.2em 0.4em;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 0.9em;
-  color: #4a6bff;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: inherit;
 }
 
-.notion-style pre {
-  background-color: #ffffff;
-  padding: 1em;
-  border-radius: 8px;
-  overflow-x: auto;
-  margin: 1em 0;
-  color: #333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.notion-style pre code {
-  background-color: transparent;
-  padding: 0;
-}
-
-/* Code block styling */
 .notion-code-block {
   margin: 1em 0;
-  border-radius: 8px;
+  border-radius: 3px;
   overflow: hidden;
-  background-color: #ffffff;
-  border: 1px solid #e6e9f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: var(--code-block-bg);
+  border: 1px solid var(--code-block-border);
+  transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .notion-code-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background-color: #f8f9fc;
-  border-bottom: 1px solid #e6e9f0;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--code-block-border);
+  font-family: 'Fira Code', 'Roboto Mono', monospace;
   font-size: 0.8em;
-  color: #7d8da7;
+}
+
+[data-theme="dark"] .notion-code-header {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .notion-code-language {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: var(--text-secondary);
   font-weight: 500;
+}
+
+.notion-code-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.notion-code-copy {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.notion-code-copy:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--accent-color);
+}
+
+[data-theme="dark"] .notion-code-copy:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .notion-pre {
   margin: 0;
   padding: 16px;
   overflow-x: auto;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: 'Fira Code', 'Roboto Mono', monospace;
   font-size: 0.9em;
   line-height: 1.5;
 }
 
-.notion-style table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1em 0;
-  color: #333;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.notion-style th, 
-.notion-style td {
-  border: 1px solid #e6e9f0;
-  padding: 0.8em;
-}
-
-.notion-style th {
-  background-color: #f8f9fc;
-  font-weight: 600;
-  color: #4a6bff;
-}
-
-.notion-style img {
-  max-width: 100%;
-  border-radius: 3px;
-}
-
-.notion-style hr {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 1.5em 0;
-}
-
-.message-timestamp {
-  font-size: 0.7rem;
-  opacity: 0.7;
-  margin-top: 5px;
-  text-align: right;
-  color: #7d8da7;
-}
-
-/* Loading Animation - Animultis-like */
-.loading {
-  background-color: transparent;
-  padding: 16px;
-  width: 100%;
-  border-bottom: none;
-}
-
-.typing-indicator {
-  display: flex;
-  gap: 5px;
-  max-width: 800px;
-  margin: 0 auto 0 52px;
-  background-color: #ffffff;
-  padding: 16px;
-  border-radius: 18px 18px 18px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  width: fit-content;
-}
-
-.typing-indicator span {
-  width: 8px;
-  height: 8px;
-  background-color: #4a6bff;
-  border-radius: 50%;
-  display: inline-block;
-  animation: pulse 1.5s infinite ease-in-out;
-  opacity: 0.6;
-}
-
-.typing-indicator span:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.typing-indicator span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.typing-indicator span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes pulse {
-  0%, 80%, 100% { transform: scale(1); opacity: 0.6; }
-  40% { transform: scale(1.3); opacity: 1; }
-}
-
-/* Add smooth transitions for all elements */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Input Area Styles - Animultis-like */
-.chatbot-input {
-  padding: 15px 20px;
-  border-top: 1px solid #e6e9f0;
-  background-color: #ffffff;
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
-}
-
-.notion-input {
-  background-color: #ffffff;
-  padding: 15px 20px;
-}
-
-.input-container {
-  display: flex;
-  position: relative;
-  align-items: center;
-  border: 1px solid #e6e9f0;
-  border-radius: 24px;
-  background-color: #f8f9fc;
-  padding: 8px 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.input-container:focus-within {
-  border-color: #4a6bff;
-  box-shadow: 0 2px 12px rgba(74, 107, 255, 0.15);
-}
-
-.chatbot-input input {
-  flex: 1;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 0;
-  font-size: 16px;
-  outline: none;
-  background-color: transparent;
-  color: #333;
-  transition: border-color 0.2s ease;
-}
-
-.notion-text-input {
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.chatbot-input input:focus {
-  border-color: transparent;
-  box-shadow: none;
-}
-
-.send-button, .new-chat-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background-color: #4a6bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(74, 107, 255, 0.2);
-}
-
-.new-chat-button {
-  margin-right: 10px;
-  background-color: #4a6bff;
-}
-
-.send-button {
-  margin-left: 10px;
-}
-
-.send-button:hover, .new-chat-button:hover {
-  background-color: #3a5bef;
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(74, 107, 255, 0.3);
-}
-
-.new-chat-button:hover {
-  background-color: #3a5bef;
-}
-
-.send-button:disabled {
-  background-color: #c4c9d4;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* Notion-like callout component */
 .notion-callout {
-  padding: 16px;
-  background-color: rgba(74, 107, 255, 0.05);
-  border-radius: 8px;
-  margin: 16px 0;
   display: flex;
-  align-items: flex-start;
-  border-left: 3px solid #4a6bff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  border-radius: 3px;
+  background-color: var(--callout-bg);
+  margin: 1em 0;
+  border-left: 4px solid var(--accent-color);
+  transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 .notion-callout-icon {
   margin-right: 12px;
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 .notion-callout-content {
   flex: 1;
 }
 
-/* Notion-like table styling */
 .notion-table-container {
   overflow-x: auto;
-  margin: 16px 0;
+  margin: 1em 0;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
 }
 
 .notion-table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 .notion-table th,
 .notion-table td {
-  border: 1px solid #e0e0e0;
-  padding: 8px 12px;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
   text-align: left;
 }
 
 .notion-table th {
-  background-color: #f7f6f3;
+  background-color: var(--bg-secondary);
+  font-weight: 600;
+}
+
+.notion-table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .notion-table tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Notion-style list items */
+.notion-list-item, .notion-numbered-item {
+  margin: 6px 0;
+  padding-left: 8px;
+}
+
+/* Highlight text */
+.notion-highlight {
+  background-color: var(--highlight-color);
+  color: var(--highlight-text);
+  padding: 0 4px;
+  border-radius: 3px;
   font-weight: 500;
 }
 
-/* Notion-like scrollbar */
-.notion-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(55, 53, 47, 0.2) transparent;
+/* Divider */
+.notion-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 1.5em 0;
 }
 
-.notion-scrollbar::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-.notion-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.notion-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(172, 172, 190, 0.3);
-  border-radius: 10px;
-}
-
-/* Notion-like code actions */
-.notion-code-actions {
-  display: flex;
-  align-items: center;
-}
-
-.notion-code-copy {
-  background: transparent;
-  border: 1px solid #565869;
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 12px;
-  cursor: pointer;
-  color: #acacbe;
-  transition: all 0.2s ease;
-}
-
-.notion-code-copy:hover {
-  background-color: #40414f;
-  color: #ececf1;
-}
-
-/* Header icon */
-.header-icon {
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-/* Responsive Styles - ChatGPT-like */
-@media (max-width: 768px) {
-  .chatbot-layout {
-    flex-direction: column;
-  }
-
-  .chatbot-container {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    max-width: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  
-  .chatbot-header {
-    border-radius: 0;
-    padding: 10px 15px;
-  }
-  
-  .message {
-    max-width: 95%;
-  }
-
-  .chatbot-messages {
-    height: calc(100vh - 120px);
-    max-height: calc(100vh - 120px);
-    padding: 15px;
-  }
-
-  .chatbot-input {
-    padding: 10px 15px;
-  }
-}
-
-/* Additional viewport fixes */
-@media (max-height: 600px) {
-  .chatbot-messages {
-    height: calc(100vh - 110px);
-    max-height: calc(100vh - 110px);
-  }
-
-  .chatbot-header {
-    padding: 8px 15px;
-  }
-
-  .chatbot-input {
-    padding: 8px 15px;
-  }
+/* Quote */
+.notion-quote {
+  padding-left: 14px;
+  border-left: 3px solid var(--text-secondary);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 1em 0;
 }
